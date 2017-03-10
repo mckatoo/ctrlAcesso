@@ -10,5 +10,5 @@ docker run -ti --name=ctrlAcesso --link=db \
 -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf \
 -v $(pwd)/vhost:/etc/nginx/sites-available/default \
 -v $(pwd)/vhost:/etc/nginx/sites-enabled/default \
-mckatoo/nginx-php:0.5 \
+mckatoo/nginx-php:latest \
 bash
