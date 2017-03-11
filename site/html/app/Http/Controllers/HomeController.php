@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\ExcelServiceProvider;
 
 class HomeController extends Controller
 {
@@ -34,13 +33,35 @@ class HomeController extends Controller
         $localArmazem = storage_path().'/xls/';
         $file->move($localArmazem,$file->getClientOriginalName());
         $arquivo = $localArmazem.$file->getClientOriginalName();
-        // dd($arquivo);
-        // $filename = this->doSomethingLikeUpload($arquivo);
 
-        Excel::load($file, function($reader) {
-            
-        });
+        $ignore = [';'];
 
-        // return back();
+        $txtArray = str_replace($ignore, '', file($arquivo));
+
+        if (($handle = fopen($arquivo, "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
+                foreach ($data as $line) {
+                    $l1 = str_replace($ignore, '', $line);
+
+                    if ($l1 !== "") {
+                    //CAMPUS
+                        if (stripos($l1, 'campus:') === 0) {
+                            $campus = substr($l1,stripos($l1, 'CAMPUS:') ,stripos($l1, 'SÉRIE:'));
+                            $campus = str_replace('CAMPUS: ', '', $campus);
+                            echo $campus.'<br>';
+                        }
+                        
+                    //CURSO
+                        if (stripos($l1, 'curso:') === 0) {
+                            $curso = substr($l1,stripos($l1, 'CURSO:') ,stripos($l1, 'TURMA:'));
+                            $curso = str_replace('CURSO: ', '', $curso);
+                            echo $curso.'<br>';
+                            echo '--------------------------------------------------------<br>';
+                        }
+                    }
+                }
+            }
+        fclose($handle);
+        }
     }
 }
