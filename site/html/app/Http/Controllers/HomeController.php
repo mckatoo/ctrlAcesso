@@ -44,19 +44,38 @@ class HomeController extends Controller
                     $l1 = str_replace($ignore, '', $line);
 
                     if ($l1 !== "") {
-                    //CAMPUS
-                        if (stripos($l1, 'campus:') === 0) {
+                    // CAMPUS
+                        if (stripos($l1, 'campus:') !== false) {
                             $campus = substr($l1,stripos($l1, 'CAMPUS:') ,stripos($l1, 'SÉRIE:'));
                             $campus = str_replace('CAMPUS: ', '', $campus);
-                            echo $campus.'<br>';
                         }
                         
                     //CURSO
-                        if (stripos($l1, 'curso:') === 0) {
+                        if (stripos($l1, 'curso:') !== false) {
                             $curso = substr($l1,stripos($l1, 'CURSO:') ,stripos($l1, 'TURMA:'));
                             $curso = str_replace('CURSO: ', '', $curso);
-                            echo $curso.'<br>';
-                            echo '--------------------------------------------------------<br>';
+                        }
+                        
+                    //TURMA
+                        if (stripos($l1, 'turma:') !== false) {
+                            $turma = substr($l1,stripos($l1, 'TURMA:'));
+                            $turma = str_replace('TURMA: ', '', $turma);
+                        }
+                        
+                    //NOME
+                        if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
+                            $numeros = $l1 + 0;
+                            $nome = substr(str_replace($numeros, '', $l1), 0, -10);
+                        }
+                        
+                    //MATRICULA
+                        if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
+                            $matricula = $l1 + 0;
+                        }
+                        
+                    //ACEITE
+                        if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
+                            $aceite = substr($l1, -10);
                         }
                     }
                 }
