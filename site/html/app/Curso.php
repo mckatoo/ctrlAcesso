@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
-	protected $table = 'turma';
+	protected $table = 'curso';
     protected $dates = ['created_at', 'updated_at'];
 
     /**

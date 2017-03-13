@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DateTime;
 
 class HomeController extends Controller
 {
@@ -34,48 +35,103 @@ class HomeController extends Controller
         $file->move($localArmazem,$file->getClientOriginalName());
         $arquivo = $localArmazem.$file->getClientOriginalName();
 
+        static $campusCSV, $cursoCSV, $turmaCSV, $nomeCSV, $matriculaCSV, $aceiteCSV;
+        static $campus, $curso, $turma, $nome, $matricula, $aceite;
+
         $ignore = [';'];
 
         $txtArray = str_replace($ignore, '', file($arquivo));
 
         if (($handle = fopen($arquivo, "r")) !== FALSE) {
+            $c = 0;
             while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
                 foreach ($data as $line) {
                     $l1 = str_replace($ignore, '', $line);
-
                     if ($l1 !== "") {
-                    // CAMPUS
-                        if (stripos($l1, 'campus:') !== false) {
-                            $campus = substr($l1,stripos($l1, 'CAMPUS:') ,stripos($l1, 'SÉRIE:'));
-                            $campus = str_replace('CAMPUS: ', '', $campus);
-                        }
-                        
                     //CURSO
                         if (stripos($l1, 'curso:') !== false) {
-                            $curso = substr($l1,stripos($l1, 'CURSO:') ,stripos($l1, 'TURMA:'));
-                            $curso = str_replace('CURSO: ', '', $curso);
+                            $c = 0;
+                            $cursoCSV = substr($l1,stripos($l1, 'CURSO:') ,stripos($l1, 'TURMA:'));
+                            $cursoCSV = utf8_encode(str_replace('CURSO: ', '', $cursoCSV));
+
+                            if (($cursoCSV != "") and (\App\Curso::where('curso',$cursoCSV)->count() == 0)) {
+                                $curso = new \App\Curso();
+                                $curso->curso = $cursoCSV;
+                                if (\App\Campus::where('campus',$campusCSV)->count() != 0) {
+                                    $curso->campus_id = \App\Campus::where('campus',$campusCSV)->first()->id;
+                                }
+                                $curso->save();
+                            }
+                            echo "</div>";
+                            echo "<div style= 'border: solid 1px black; margin-bottom: 10px;'>";
+                            echo "$cursoCSV -----------------";
                         }
-                        
+                    
                     //TURMA
                         if (stripos($l1, 'turma:') !== false) {
-                            $turma = substr($l1,stripos($l1, 'TURMA:'));
-                            $turma = str_replace('TURMA: ', '', $turma);
+                            $turmaCSV = substr($l1,stripos($l1, 'TURMA:'));
+                            $turmaCSV = utf8_encode(str_replace('TURMA: ', '', $turmaCSV));
+
+                            if (($turmaCSV != "") and (\App\Turma::where('turma',$turmaCSV)->count() == 0)) {
+                                $turma = new \App\Turma();
+                                $turma->turma = $turmaCSV;
+                                if (\App\Curso::where('curso',$cursoCSV)->count() != 0) {
+                                    $turma->curso_id = \App\Curso::where('curso',$cursoCSV)->first()->id;
+                                }
+                                $turma->save();
+                            }
+                            echo "$turmaCSV <br>";
                         }
-                        
-                    //NOME
-                        if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
-                            $numeros = $l1 + 0;
-                            $nome = substr(str_replace($numeros, '', $l1), 0, -10);
+                    
+                    // CAMPUS
+                        if (stripos($l1, 'campus:') !== false) {
+                            $campusCSV = utf8_encode(substr($l1,stripos($l1, 'CAMPUS:') ,stripos($l1, utf8_decode('SÉRIE:'))));
+                            $campusCSV = str_replace('CAMPUS: ', '', $campusCSV);
+
+
+                            if (($campusCSV != "") and (\App\Campus::where('campus','=',$campusCSV)->count() == 0)) {
+                                $campus = new \App\Campus();
+                                $campus->campus = $campusCSV;
+                                $campus->save();
+                            }
+                            echo "$campusCSV <br>";
                         }
-                        
+                    
                     //MATRICULA
                         if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
-                            $matricula = $l1 + 0;
+                            $c ++;
+                            $matricula = (int) $l1;
+                            $matriculaCSV = utf8_encode(substr($matricula, -11));
+
+                            if (($matriculaCSV != "") and (\App\Aluno::where('matricula',$matriculaCSV)->count() == 0)) {
+                                $aluno = new \App\Aluno();
+                                $aluno->matricula = $matriculaCSV;
+                                if (\App\Turma::where('turma',$turmaCSV)->count() != 0) {
+                                    $aluno->turma_id = \App\Turma::where('turma',$turmaCSV)->first()->id;
+                                }
+                            }
+
+                            echo "$matriculaCSV -----------------";
                         }
-                        
+                    
+                    //NOME
+                        if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
+                            $numeros = (int) $l1;
+                            $nomeCSV = utf8_encode(substr(str_replace($numeros, '', $l1), 0, -10));
+
+                            $aluno->nome = $nomeCSV;
+
+                            echo "$nomeCSV -----------------";
+                        }
+                    
                     //ACEITE
                         if ((substr($l1, -4)=='2016') or (substr($l1, -4)=='2017')) {
-                            $aceite = substr($l1, -10);
+                            $aceiteCSV = utf8_encode(substr($l1, -10));
+
+                            $aluno->aceite_contrato = DateTime::createFromFormat('d/m/Y', $aceiteCSV);
+                            $aluno->save();
+
+                            echo "$aceiteCSV <br>";
                         }
                     }
                 }
