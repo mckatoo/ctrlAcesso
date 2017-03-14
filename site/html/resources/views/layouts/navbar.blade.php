@@ -16,7 +16,7 @@
             <li><a href="#">Perfil</a></li>
             <li><a href="#">Ajuda</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
+          <form action="{{ route('secretaria.pesquisar') }}" method="POST" enctype="multipart/form-data" class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Pesquisar...">
           </form>
         </div>

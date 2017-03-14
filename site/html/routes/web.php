@@ -21,6 +21,11 @@ Route::get('/', 'HomeController@index');
 
 Route::post('importar', ['as' => 'importar', 'uses' => 'HomeController@importar']);
 
+Route::group(['prefix' => 'secretaria','as' => 'secretaria.'], function() {
+	Route::get('/', ['as' => 'index', 'uses' => 'SecretariaController@index']);
+	Route::post('pesquisar', ['as' => 'pesquisar', 'uses' => 'SecretariaController@pesquisar']);
+});
+
 // Route::group(['prefix' => 'usuarios','as' => 'usuarios.'], function() {
 //     Route::post('apagar',               ['as' => 'apagar', 'uses' => 'Auth\RegisterController@apagar']);
 //     Route::get('update',                ['as' => 'update', 'uses' => 'Auth\RegisterController@update']);

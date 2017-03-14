@@ -9,13 +9,13 @@
       <div class="row">
         @include('layouts.sidebar')
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Principal</h1>
 
-          <form action="{{ route('importar') }}" method="POST" class="form-inline" role="form" enctype="multipart/form-data">
+          {{-- <form action="{{ route('importar') }}" method="POST" class="form-inline" role="form" enctype="multipart/form-data">
           {{ csrf_field() }}
             <div class="form-group">
-              <label class="control-label" for="file">Importar Excel</label>
-              <input type="file" name="arquivo" class="form-control">
+              <label class="control-label" for="file">Importar CSV</label>
+              <input type="file" accept=".csv" name="arquivo" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
@@ -65,7 +65,7 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

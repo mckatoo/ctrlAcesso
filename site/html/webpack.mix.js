@@ -14,6 +14,7 @@ const { mix } = require('laravel-mix');
 mix
 	.js([
 		'resources/assets/js/app.js',
+		'resources/assets/js/milton.js',
 		'node_modules/jquery/dist/jquery.min.js',
 	], 'public/js')
 	.js([

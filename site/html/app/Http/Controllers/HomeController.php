@@ -43,6 +43,11 @@ class HomeController extends Controller
         $txtArray = str_replace($ignore, '', file($arquivo));
 
         if (($handle = fopen($arquivo, "r")) !== FALSE) {
+            \DB::table('aluno')->delete();
+            \DB::table('turma')->delete();
+            \DB::table('curso')->delete();
+            \DB::table('campus')->delete();
+
             $c = 0;
             while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
                 foreach ($data as $line) {
@@ -62,9 +67,9 @@ class HomeController extends Controller
                                 }
                                 $curso->save();
                             }
-                            echo "</div>";
-                            echo "<div style= 'border: solid 1px black; margin-bottom: 10px;'>";
-                            echo "$cursoCSV -----------------";
+                            // echo "</div>";
+                            // echo "<div style= 'border: solid 1px black; margin-bottom: 10px;'>";
+                            // echo "$cursoCSV -----------------";
                         }
                     
                     //TURMA
@@ -80,7 +85,7 @@ class HomeController extends Controller
                                 }
                                 $turma->save();
                             }
-                            echo "$turmaCSV <br>";
+                            // echo "$turmaCSV <br>";
                         }
                     
                     // CAMPUS
@@ -94,7 +99,7 @@ class HomeController extends Controller
                                 $campus->campus = $campusCSV;
                                 $campus->save();
                             }
-                            echo "$campusCSV <br>";
+                            // echo "$campusCSV <br>";
                         }
                     
                     //MATRICULA
@@ -111,7 +116,7 @@ class HomeController extends Controller
                                 }
                             }
 
-                            echo "$matriculaCSV -----------------";
+                            // echo "$matriculaCSV -----------------";
                         }
                     
                     //NOME
@@ -121,7 +126,7 @@ class HomeController extends Controller
 
                             $aluno->nome = $nomeCSV;
 
-                            echo "$nomeCSV -----------------";
+                            // echo "$nomeCSV -----------------";
                         }
                     
                     //ACEITE
@@ -131,12 +136,28 @@ class HomeController extends Controller
                             $aluno->aceite_contrato = DateTime::createFromFormat('d/m/Y', $aceiteCSV);
                             $aluno->save();
 
-                            echo "$aceiteCSV <br>";
+                            // echo "$aceiteCSV <br>";
                         }
                     }
                 }
             }
         fclose($handle);
         }
+
+    $aluno = \App\Aluno::with('turma')->get();
+    foreach ($aluno as $a) {
+        if (filter_var($a->nome,FILTER_SANITIZE_NUMBER_INT) !== '') {
+            $idIncoerencia = $a->id;
+            $erro = "Existem incoerências no cadastro com id $a->id.";
+        }
+    }
+    if (isset($erro)) {
+        // return view('secretaria.index',compact('aluno','idIncoerencia'))->with('erro',$erro);
+        return back()->with('sucesso','Arquivo importado com sucesso!')->with('erro',$erro);
+    } else {
+        return back()->with('sucesso','Arquivo importado com sucesso!');
+    }
+
+
     }
 }
