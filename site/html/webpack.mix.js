@@ -16,6 +16,7 @@ mix
 		'resources/assets/js/app.js',
 		'resources/assets/js/milton.js',
 		'node_modules/jquery/dist/jquery.min.js',
+		'resources/assets/js/jquery-ui.js',
 	], 'public/js')
 	.js([
 		'resources/assets/js/holder.min.js',

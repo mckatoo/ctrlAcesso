@@ -22,8 +22,9 @@ Route::get('/', 'HomeController@index');
 Route::post('importar', ['as' => 'importar', 'uses' => 'HomeController@importar']);
 
 Route::group(['prefix' => 'secretaria','as' => 'secretaria.'], function() {
-	Route::get('/', ['as' => 'index', 'uses' => 'SecretariaController@index']);
-	Route::post('pesquisar', ['as' => 'pesquisar', 'uses' => 'SecretariaController@pesquisar']);
+	Route::get('/', 			['as' => 'index', 		'uses' => 'SecretariaController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'SecretariaController@pesquisar']);
+	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'SecretariaController@salvar']);
 });
 
 // Route::group(['prefix' => 'usuarios','as' => 'usuarios.'], function() {

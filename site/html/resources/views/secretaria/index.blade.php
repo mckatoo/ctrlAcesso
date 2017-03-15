@@ -43,6 +43,7 @@
                   <th>Curso</th>
                   <th>Turma</th>
                   <th>Aceite Contrato</th>
+                  <th colspan="2"></th>
                 </tr>
               </thead>
               <tbody>
@@ -54,10 +55,18 @@
                 @endif
                   <td>{{ $a->matricula }}</td>
                   <td>{{ $a->nome }}</td>
-                  <td>{{ $a->turma->curso->campus['campus'] }}</td>
-                  <td>{{ $a->turma->curso->curso }}</td>
+                  <td>{{ $a->turma->curso->campus['campus'] }}</a></td>
+                  <td>{{ $a->turma->curso->curso }}</a></td>
                   <td>{{ $a->turma->turma }}</td>
                   <td>{{ $a->aceite_contrato->format('d/m/Y') }}</td>
+                  <td>
+                    <a class="btn btn-xs btn-primary" data-toggle="modal" href='#modalEdit{{ $a->id }}'>Editar</a>
+                    @include('secretaria.editar')
+                  </td>
+                  <td>
+                    <a class="btn btn-xs btn-danger" data-toggle="modal" href='#modalDelete{{ $a->id }}'>Apagar</a>
+                    @include('secretaria.apagar')
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

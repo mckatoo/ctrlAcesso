@@ -14,6 +14,9 @@ class SecretariaController extends Controller
 
     public function index()
     {
+    	$campus = \App\Campus::get();
+    	$curso = \App\Curso::get();
+    	$turma = \App\Turma::get();
     	$aluno = \App\Aluno::with('turma')->paginate(10);
     	foreach ($aluno as $a) {
 	    	if (filter_var($a->nome,FILTER_SANITIZE_NUMBER_INT) !== '') {
@@ -22,9 +25,9 @@ class SecretariaController extends Controller
 	    	}
     	}
     	if (isset($erro)) {
-	    	return view('secretaria.index',compact('aluno','idIncoerencia'))->with('erro',$erro);
+	    	return view('secretaria.index',compact('campus','curso','turma','aluno','idIncoerencia'))->with('erro',$erro);
     	} else {
-	    	return view('secretaria.index',compact('aluno','idIncoerencia'));
+	    	return view('secretaria.index',compact('campus','curso','turma','aluno','idIncoerencia'));
     	}
     }
 
@@ -32,5 +35,10 @@ class SecretariaController extends Controller
     public function pesquisar(Request $request)
     {
     	# code...
+    }
+
+    public function salvar(Request $request)
+    {
+    	dd($request->all());
     }
 }

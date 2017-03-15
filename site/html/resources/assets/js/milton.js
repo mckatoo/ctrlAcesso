@@ -8,6 +8,14 @@ $('#btnUpload').on('click',function () {
 	
 });
 
+$( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "dd/mm/yy",
+    });
+});
+
 var url_atual = window.location.pathname;
 if (url_atual == '/') {
 	$('#menuPrincipal').addClass('active');
