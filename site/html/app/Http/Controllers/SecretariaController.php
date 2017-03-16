@@ -32,13 +32,19 @@ class SecretariaController extends Controller
     }
 
 
+    public function configuracoes()
+    {
+        $campus = \App\Campus::get();
+        $curso = \App\Curso::with('campus')->get();
+        $turma = \App\Turma::with('curso')->get();
+        $usuarios = \App\User::with('tipo')->get();
+        $tipoUsers = \App\tipoUser::get();
+        return view('configuracoes.index',compact('campus','curso','turma','usuarios','tipoUsers'));
+    }
+
+
     public function pesquisar(Request $request)
     {
     	# code...
-    }
-
-    public function salvar(Request $request)
-    {
-    	dd($request->all());
     }
 }

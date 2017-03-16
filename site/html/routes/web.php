@@ -22,13 +22,31 @@ Route::get('/', 'HomeController@index');
 Route::post('importar', ['as' => 'importar', 'uses' => 'HomeController@importar']);
 
 Route::group(['prefix' => 'secretaria','as' => 'secretaria.'], function() {
-	Route::get('/', 			['as' => 'index', 		'uses' => 'SecretariaController@index']);
-	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'SecretariaController@pesquisar']);
-	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'SecretariaController@salvar']);
+	Route::get('/', 			['as' => 'index', 			'uses' => 'SecretariaController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 		'uses' => 'SecretariaController@pesquisar']);
+	Route::get('configuracoes', ['as' => 'configuracoes', 	'uses' => 'SecretariaController@configuracoes']);
 });
 
-// Route::group(['prefix' => 'usuarios','as' => 'usuarios.'], function() {
-//     Route::post('apagar',               ['as' => 'apagar', 'uses' => 'Auth\RegisterController@apagar']);
-//     Route::get('update',                ['as' => 'update', 'uses' => 'Auth\RegisterController@update']);
-//     Route::post('update',               ['as' => 'update', 'uses' => 'Auth\RegisterController@postUpdate']);
-// });
+Route::group(['prefix' => 'aluno','as' => 'aluno.'], function() {
+	Route::get('/', 			['as' => 'index', 		'uses' => 'AlunoController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'AlunoController@pesquisar']);
+	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'AlunoController@salvar']);
+});
+
+Route::group(['prefix' => 'campus','as' => 'campus.'], function() {
+	Route::get('/', 			['as' => 'index', 		'uses' => 'CampusController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'CampusController@pesquisar']);
+	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'CampusController@salvar']);
+});
+
+Route::group(['prefix' => 'curso','as' => 'curso.'], function() {
+	Route::get('/', 			['as' => 'index', 		'uses' => 'CursoController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'CursoController@pesquisar']);
+	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'CursoController@salvar']);
+});
+
+Route::group(['prefix' => 'turma','as' => 'turma.'], function() {
+	Route::get('/', 			['as' => 'index', 		'uses' => 'TurmaController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'TurmaController@pesquisar']);
+	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'TurmaController@salvar']);
+});

@@ -12,7 +12,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Principal</a></li>
-            <li><a href="#">Configurações</a></li>
+            <li class="menuConfiguracoes"><a href="{{ route('secretaria.configuracoes') }}">Configurações</a></li>
             <li><a href="#">Perfil</a></li>
             <li><a href="#">Ajuda</a></li>
           </ul>

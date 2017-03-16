@@ -1,9 +1,9 @@
-{
-	color: #777777;
+body {
+    background-color: #fff;
 }
 
 .navbar {
-	background-color: #FFFFFF;
+	background-color: #f5f5f5;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
@@ -343,4 +343,28 @@ input[type=file] {
     top: calc(50% + 40px);
     font-weight: bolder;
     color: #0a44ce;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: inherit;
+}
+
+.table-fixed thead {
+  width: 97%;
+}
+.table-fixed tbody {
+  height: 230px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+.table-fixed tbody > tr {
+    display: flex;
+    vertical-align: middle;
 }

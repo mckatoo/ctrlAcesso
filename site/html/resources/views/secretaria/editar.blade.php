@@ -5,7 +5,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title">Editar Matricula {{ $a->matricula }}</h4>
 			</div>
-			<form action="{{ route('secretaria.salvar') }}" class="form" method="POST" role="form">
+			<form action="{{ route('aluno.salvar') }}" class="form" method="POST" role="form">
 				{{ csrf_field() }}
 				<input type="hidden" name="id" value="{{ $a->id }}">
 				<div class="panel panel-default">
@@ -44,7 +44,7 @@
 								@endforeach
 							</select>
 						</div>
-						<div class="form-group col-lg-6">
+						<div class="form-group col-lg-4">
 							<label class="control-label">Turma</label>
 							<select name="turma" class="form-control" required="required">
 								<option value="0">Selecione...</option>
@@ -57,9 +57,13 @@
 								@endforeach
 							</select>
 						</div>
-						<div class="form-group col-lg-6">
+						<div class="form-group col-lg-4">
 							<label class="control-label">Aceite do Contrato</label>
-							<input type="text" name="aceite" id="datepicker" class="form-control" value="{{ $a->aceite_contrato->format('d/m/Y') }}" required="required" title="Aceite do Contrato">
+							<input type="text" name="aceite" class="form-control datepicker" value="{{ $a->aceite_contrato->format('d/m/Y') }}" required="required" title="Aceite do Contrato">
+						</div>
+						<div class="form-group col-lg-4">
+							<label class="control-label">Entradas</label>
+							<input type="number" name="entradas" class="form-control" value="{{ $a->entradas }}" title="Entradas Permitidas">
 						</div>
 					</div>
 					<div class="panel-footer">

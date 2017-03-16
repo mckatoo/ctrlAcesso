@@ -9,10 +9,11 @@ $('#btnUpload').on('click',function () {
 });
 
 $( function() {
-    $( "#datepicker" ).datepicker({
+    $( ".datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
       dateFormat: "dd/mm/yy",
+      language: "pt-BR",
     });
 });
 

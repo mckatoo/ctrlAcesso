@@ -43,6 +43,7 @@
                   <th>Curso</th>
                   <th>Turma</th>
                   <th>Aceite Contrato</th>
+                  <th>Entradas</th>
                   <th colspan="2"></th>
                 </tr>
               </thead>
@@ -59,6 +60,7 @@
                   <td>{{ $a->turma->curso->curso }}</a></td>
                   <td>{{ $a->turma->turma }}</td>
                   <td>{{ $a->aceite_contrato->format('d/m/Y') }}</td>
+                  <td>{{ $a->entradas }}</td>
                   <td>
                     <a class="btn btn-xs btn-primary" data-toggle="modal" href='#modalEdit{{ $a->id }}'>Editar</a>
                     @include('secretaria.editar')
