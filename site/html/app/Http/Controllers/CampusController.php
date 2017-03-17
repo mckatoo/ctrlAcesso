@@ -27,8 +27,14 @@ class CampusController extends Controller
     public function salvar(Request $request)
     {
     	$this->validate($request, [
-	        'campus' => 'required|unique:campus|max:255',
+	        'campus' => 'bail|required|max:50',
 	    ]);
+
+        if (\App\Campus::where('campus','like','%'.$request->campus.'%')->count() > 0) {
+            return back()->with('erro',"Campus $request->campus já existe!");
+        }
+
+        return \App\Campus::where('campus','like',$request->campus)->count();
 
 	    $campus = new \App\Campus();
 	    $campus->campus = $request->campus;
