@@ -1,6 +1,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-user"></i> Cursos
+                    <i class="fa fa-book"></i> Cursos
                     <div class="pull-right">
                         <div class="btn-group">
                             <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-cursos'>Novo</a>

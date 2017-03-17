@@ -1,18 +1,74 @@
 body {
     background-color: #fff;
+    padding-top: 0px;
 }
 
-.navbar {
+/*.navbar {
 	background-color: #f5f5f5;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover {
-	color: inherit;
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: inherit;
+}*/
+
+
+
+
+.navbar-top-links {
+  margin-right: 0;
+}
+.navbar-top-links li {
+  display: inline-block;
+}
+.navbar-top-links li:last-child {
+  margin-right: 15px;
+}
+.navbar-top-links li a {
+  padding: 15px;
+  min-height: 50px;
+}
+.navbar-top-links .dropdown-menu li {
+  display: block;
+}
+.navbar-top-links .dropdown-menu li:last-child {
+  margin-right: 0;
+}
+.navbar-top-links .dropdown-menu li a {
+  padding: 3px 20px;
+  min-height: 0;
+}
+.navbar-top-links .dropdown-menu li a div {
+  white-space: normal;
+}
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+  width: 310px;
+  min-width: 0;
+}
+.navbar-top-links .dropdown-messages {
+  margin-left: 5px;
+}
+.navbar-top-links .dropdown-tasks {
+  margin-left: -59px;
+}
+.navbar-top-links .dropdown-alerts {
+  margin-left: -123px;
+}
+.navbar-top-links .dropdown-user {
+  right: 0;
+  left: auto;
 }
 
 @media (min-width: 768px) {
     .navbar-brand{
         padding: 8px 10px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
     }
 
     .footer {
@@ -40,9 +96,9 @@ small {
     font-style: oblique;
     font-weight: bold;
 }
-.navbar-top-links .dropdown-menu li a{
+/*.navbar-top-links .dropdown-menu li a{
     color: #337ab7;
-}
+}*/
 
 .pull-right-m{
     padding: 0px;
@@ -267,6 +323,10 @@ h5{
 }
 
 @media (min-width: 768px) {
+    .sidebar {
+        margin-top: 0px;
+    }
+    
     #page-wrapper {
         padding: 10px;
     }
@@ -345,10 +405,6 @@ input[type=file] {
     color: #0a44ce;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-    color: inherit;
-}
-
 .table-fixed thead {
   width: 97%;
 }
@@ -367,4 +423,7 @@ input[type=file] {
 .table-fixed tbody > tr {
     display: flex;
     vertical-align: middle;
+}
+.dropdown-menu > li > a {
+    color: #337ab7;
 }

@@ -1,6 +1,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-user"></i> Turma
+                    <i class="fa fa-users"></i> Turma
                     <div class="pull-right">
                         <div class="btn-group">
                             <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-turma'>Novo</a>

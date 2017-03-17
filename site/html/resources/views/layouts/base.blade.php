@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/base.css') }}" rel="stylesheet">
     
     @yield('css')
 
@@ -22,23 +23,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
 </head>
+
 <body>
-    <div id="wrapper">
-        @include('layouts.navbar')
-        @yield('content')
-    </div>
 
-    <!-- Scripts -->
-    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+    @yield('content')
 
-     <!-- jQuery -->
+    <!-- jQuery -->
     <script src={{ asset('js/jquery.min.js') }}></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -51,5 +42,7 @@
     <script src={{ asset('js/sb-admin-2.js') }}></script>
 
     @yield('script')
+
 </body>
+
 </html>

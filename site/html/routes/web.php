@@ -31,22 +31,26 @@ Route::group(['prefix' => 'aluno','as' => 'aluno.'], function() {
 	Route::get('/', 			['as' => 'index', 		'uses' => 'AlunoController@index']);
 	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'AlunoController@pesquisar']);
 	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'AlunoController@salvar']);
+	Route::post('apagar', 		['as' => 'apagar', 		'uses' => 'AlunoController@apagar']);
 });
 
 Route::group(['prefix' => 'campus','as' => 'campus.'], function() {
 	Route::get('/', 			['as' => 'index', 		'uses' => 'CampusController@index']);
 	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'CampusController@pesquisar']);
 	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'CampusController@salvar']);
+	Route::post('apagar', 		['as' => 'apagar', 		'uses' => 'CampusController@apagar']);
 });
 
 Route::group(['prefix' => 'curso','as' => 'curso.'], function() {
 	Route::get('/', 			['as' => 'index', 		'uses' => 'CursoController@index']);
 	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'CursoController@pesquisar']);
 	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'CursoController@salvar']);
+	Route::post('apagar', 		['as' => 'apagar', 		'uses' => 'CursoController@apagar']);
 });
 
 Route::group(['prefix' => 'turma','as' => 'turma.'], function() {
 	Route::get('/', 			['as' => 'index', 		'uses' => 'TurmaController@index']);
 	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'TurmaController@pesquisar']);
 	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'TurmaController@salvar']);
+	Route::post('apagar', 		['as' => 'apagar', 		'uses' => 'TurmaController@apagar']);
 });
