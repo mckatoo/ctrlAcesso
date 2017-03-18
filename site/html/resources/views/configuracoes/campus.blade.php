@@ -12,10 +12,11 @@
                                             <h4 class="modal-title">Campus</h4>
                                         </div>
                                         <div class="modal-body">
-                                            {!! Form::open(['route' => 'campus.salvar', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                            {!! Form::open(['route' => 'campus.salvar', 'method' => 'POST', 'enctype' => 'multipart/form-data','id' => 'frmCampus']) !!}
+                                            {!! Form::hidden('id', null, ['id'=>'id']) !!}
                                             <div class="form-group col-lg-12">
                                             {!! Form::label('campus', 'Campus', ['class' => 'control-label']) !!}
-                                            {!! Form::text('campus', null, ['class'=>'form-control']) !!}
+                                            {!! Form::text('campus', null, ['class'=>'form-control', 'id'=>'campus']) !!}
                                             </div>
                                             {!! Form::reset('Cancelar', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
                                             {!! Form::submit('Salvar', ['class' => 'btn btn-primary pull-right']) !!}
@@ -41,7 +42,12 @@
                                 <tr>
                                     <td class="col-lg-6">{{ $c->campus }}</td>
                                     <td class="col-lg-2 text-center">{{ $c->created_at->format('d/m/Y') }}</td>
-                                    <td class="col-lg-2 text-right"><a class="btn btn-xs btn-primary">Editar</a></td>
+                                    <td class="col-lg-2 text-right">
+                                        <a class="btn btn-xs btn-primary" data-toggle="modal" href='#modal-campus' onclick="
+                                        $('#id').val('{{ $c->id }}');
+                                        $('#campus').val('{{ $c->campus }}');
+                                        ">Editar</a>
+                                    </td>
                                     <td class="col-lg-2 text-right">
                                         <a class="btn btn-xs btn-danger" data-toggle="modal" href='#modal-campus-apagar{{ $c->id }}'>Apagar</a>
                                         <div class="modal fade" id="modal-campus-apagar{{ $c->id }}">

@@ -20,21 +20,19 @@ $( function() {
       dateFormat: "dd/mm/yy",
       language: "pt-BR",
     });
-});
 
-var url_atual = window.location.pathname;
-if (url_atual == '/') {
-	$('#menuPrincipal').addClass('active');
-} else if (url_atual = '/secretaria') {
-	$('#menuSecretaria').addClass('active');
-} else if (url_atual = '/controle') {
-	$('#menuControle').addClass('active');
-} else if (url_atual = '/relatorios') {
-	$('#menuRelatorios').addClass('active');
-}
+    var url_atual = window.location.pathname;
+    if (url_atual == '/') {
+    	$('#menuPrincipal').addClass('active');
+    } else if (url_atual = '/secretaria') {
+    	$('#menuSecretaria').addClass('active');
+    } else if (url_atual = '/controle') {
+    	$('#menuControle').addClass('active');
+    } else if (url_atual = '/relatorios') {
+    	$('#menuRelatorios').addClass('active');
+    }
 
 
-$(function() {
     $(window).bind("load resize", function() {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -54,9 +52,6 @@ $(function() {
     });
 
     var url = window.location;
-    // var element = $('ul.nav a').filter(function() {
-    //     return this.href == url;
-    // }).addClass('active').parent().parent().addClass('in').parent();
     var element = $('ul.nav a').filter(function() {
         return this.href == url;
     }).addClass('active').parent();
