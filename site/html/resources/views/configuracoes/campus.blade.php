@@ -3,7 +3,7 @@
                     <i class="fa fa-university"></i> Campus
                     <div class="pull-right">
                         <div class="btn-group">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-campus'>Novo</a>
+                            <a class="btn btn-primary btn-xs novo" data-toggle="modal" href='#modal-campus'>Novo</a>
                             <div class="modal fade" id="modal-campus">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
