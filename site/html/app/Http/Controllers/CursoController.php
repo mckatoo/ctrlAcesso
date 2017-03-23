@@ -26,6 +26,29 @@ class CursoController extends Controller
 
     public function salvar(Request $request)
     {
-    	dd($request->all());
+    	if ($request->id == '') {
+            $curso = new \App\Curso();
+            $sucesso = 'Curso cadastrado com sucesso.';
+        } else {
+            $curso = \App\Curso::find($request->id);
+            $sucesso = 'Curso atualizado com sucesso.';
+        }
+        $curso->curso = $request->curso;
+        $curso->campus_id = $request->campus;
+        $curso->save();
+        
+        return back()->with('sucesso',$sucesso);
+    }
+
+
+    public function apagar(Request $request)
+    {
+        if (\App\Turma::where('curso_id','=',$request->id)->count() > 0) {
+            return back()->with('erro','A tabela Turma depende deste Curso!');
+        } else {
+            \App\Curso::find($request->id)->delete();
+            return back()->with('sucesso','Registro apagado com sucesso!');
+        }
+        
     }
 }

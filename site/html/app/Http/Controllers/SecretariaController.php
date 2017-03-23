@@ -18,17 +18,12 @@ class SecretariaController extends Controller
     	$curso = \App\Curso::get();
     	$turma = \App\Turma::get();
     	$aluno = \App\Aluno::with('turma')->paginate(10);
-    	foreach ($aluno as $a) {
-	    	if (filter_var($a->nome,FILTER_SANITIZE_NUMBER_INT) !== '') {
-	    		$idIncoerencia = $a->id;
-	    		$erro = "Existem incoerências no cadastro com id $a->id.";
-	    	}
-    	}
-    	if (isset($erro)) {
-	    	return view('secretaria.index',compact('campus','curso','turma','aluno','idIncoerencia'))->with('erro',$erro);
-    	} else {
-	    	return view('secretaria.index',compact('campus','curso','turma','aluno','idIncoerencia'));
-    	}
+        $incoerenciaAluno = \App\Aluno::where('nome','REGEXP','[[:digit:]]')->get();
+        if ($incoerenciaAluno->count() > 0) {
+	    	return view('secretaria.index',compact('campus','curso','turma','aluno'))->with('erro','Existem incoerências no cadastro. Clique aqui para resolver.');
+        } else {
+	    	return view('secretaria.index',compact('campus','curso','turma','aluno'));
+        }
     }
 
 
@@ -39,7 +34,11 @@ class SecretariaController extends Controller
         $turma = \App\Turma::with('curso')->get();
         $usuarios = \App\User::with('tipo')->get();
         $tipoUsers = \App\tipoUser::get();
-        return view('configuracoes.index',compact('campus','curso','turma','usuarios','tipoUsers'));
+        if (($curso->where('campus_id','=','')->count() > 0)or($turma->where('curso_id','=','')->count() > 0)) {
+            return view('configuracoes.index',compact('campus','curso','turma','usuarios','tipoUsers'))->with('erro','Incoerências para resolver estão em vermelho.');
+        } else {
+            return view('configuracoes.index',compact('campus','curso','turma','usuarios','tipoUsers'));
+        }
     }
 
 

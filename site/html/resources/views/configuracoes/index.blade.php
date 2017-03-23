@@ -24,6 +24,12 @@
             <strong>Atenção!</strong> {{ session('erro') }}
           </div>
         @endif
+        @if (isset($erro))
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Atenção!</strong> {{ $erro }}
+          </div>
+        @endif
         @if (session('sucesso'))
           <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -58,4 +64,5 @@
 
 @section('script')
     <script type="text/javascript" src="{{ mix('js/dashboard.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 @stop

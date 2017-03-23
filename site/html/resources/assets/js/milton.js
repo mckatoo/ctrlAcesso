@@ -1,15 +1,15 @@
-$('.logout').on('click', function () {
-    alert('asldfjsdf');
-    $('#logout').submit();
-});
+$(document).ready(function () {
+    $('.logout').on('click', function () {
+        $('#logout').submit();
+    });
 
-$('#btnUpload').on('click',function () {
-	$('.loading').removeClass('hidden');
-	$('#frmUpload').submit();
-	
-});
+    $('#btnUpload').on('click',function () {
+        console.log('teste');
+    	$('.loading').removeClass('hidden');
+    	$('#frmUpload').submit();
+    	
+    });
 
-$( function() {
     $( ".datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
@@ -59,14 +59,4 @@ $( function() {
             break;
         }
     }
-
-    $('.novo').on('click', function () {
-        $('.form')
-            .find("input,textarea,select")
-                .val('')
-                .end()
-            .find("input[type=checkbox], input[type=radio]")
-                .prop("checked", "")
-                .end();
-    })
 });

@@ -144,20 +144,6 @@ class HomeController extends Controller
         fclose($handle);
         }
 
-    $aluno = \App\Aluno::with('turma')->get();
-    foreach ($aluno as $a) {
-        if (filter_var($a->nome,FILTER_SANITIZE_NUMBER_INT) !== '') {
-            $idIncoerencia = $a->id;
-            $erro = "Existem incoerências no cadastro com id $a->id.";
-        }
-    }
-    if (isset($erro)) {
-        // return view('secretaria.index',compact('aluno','idIncoerencia'))->with('erro',$erro);
-        return back()->with('sucesso','Arquivo importado com sucesso!')->with('erro',$erro);
-    } else {
-        return back()->with('sucesso','Arquivo importado com sucesso!');
-    }
-
-
+    return back()->with('sucesso','Arquivo importado com sucesso!');
     }
 }

@@ -368,6 +368,10 @@ h5{
     color: #fff;
 }
 
+.alert-danger > a {
+    color: #a94442;
+}
+
 .modal {
     color: #636b6f;
 }

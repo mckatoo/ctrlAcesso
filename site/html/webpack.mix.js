@@ -13,7 +13,6 @@ const { mix } = require('laravel-mix');
 
 mix
 	.js([
-      'resources/assets/js/app.js',
 		'resources/assets/js/milton.js',
 		'resources/assets/js/bootstrap-datepicker.min.js',
 		'resources/assets/js/bootstrap-datepicker.pt-BR.min.js',

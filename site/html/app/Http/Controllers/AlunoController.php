@@ -48,4 +48,11 @@ class AlunoController extends Controller
         $aluno->save();
         return back()->with('sucesso',$msg);
     }
+
+
+    public function apagar(Request $request)
+    {
+        \App\Aluno::find($request->idApagar)->delete();
+        return back()->with('sucesso','Aluno excluido com sucesso!');
+    }
 }
