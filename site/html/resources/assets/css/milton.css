@@ -323,6 +323,15 @@ h5{
 }
 
 @media (min-width: 768px) {
+    .navbar {
+        position: fixed;
+        width: 100%;
+    }
+
+    .main {
+        margin-top: 51px;
+    }
+
     .sidebar {
         margin-top: 0px;
     }

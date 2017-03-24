@@ -19,8 +19,8 @@ class SecretariaController extends Controller
     	$turma = \App\Turma::get();
     	$aluno = \App\Aluno::with('turma')->paginate(10);
         $incoerenciaAluno = \App\Aluno::where('nome','REGEXP','[[:digit:]]')->get();
-        if ($incoerenciaAluno->count() > 0) {
-	    	return view('secretaria.index',compact('campus','curso','turma','aluno'))->with('erro','Existem incoerências no cadastro. Clique aqui para resolver.');
+        if (($incoerenciaAluno->count() > 0)or($curso->where('campus_id','=','')->count() > 0)or($turma->where('curso_id','=','')->count() > 0)) {
+	    	return view('secretaria.index',compact('campus','curso','turma','aluno','incoerenciaAluno'))->with('erro','Existem incoerências no cadastro. Clique aqui para resolver. Demais incoerências estão listadas em vermelho abaixo.');
         } else {
 	    	return view('secretaria.index',compact('campus','curso','turma','aluno'));
         }

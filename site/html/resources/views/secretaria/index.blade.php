@@ -107,7 +107,13 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($aluno as $a)
+              @if (isset($incoerenciaAluno))
+                <div class="hidden">{{ $tabela = $incoerenciaAluno }}</div>
+              @else
+                <div class="hidden">{{ $tabela = $aluno }}</div>
+              @endif
+
+              @foreach ($tabela as $a)
                 @if ((filter_var($a->nome,FILTER_SANITIZE_NUMBER_INT) !== '')or($a->turma->curso['campus_id'] == '')or($a->turma->curso['curso'] == ''))
                   <tr class="alert-danger">
                 @else
@@ -131,9 +137,7 @@
                       $('[name=matricula]').val('{{ $a->matricula }}');
                       $('[name=nome]').val('{{ $a->nome }}');
                       $('[name=campus]').val('{{ $a->turma->curso['campus_id'] }}');
-                      $('[name=campus]').attr('disabled','disabled');
                       $('[name=curso]').val('{{ $a->turma->curso_id }}');
-                      $('[name=curso]').attr('disabled','disabled');
                       $('[name=turma]').val('{{ $a->turma_id }}');
                       $('[name=aceite]').val('{{ $a->aceite_contrato->format('d/m/Y') }}');
                       $('[name=entradas]').val('{{ $a->entradas }}');

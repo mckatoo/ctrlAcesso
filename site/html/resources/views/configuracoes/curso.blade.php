@@ -3,7 +3,12 @@
                     <i class="fa fa-book"></i> Cursos
                     <div class="pull-right">
                         <div class="btn-group">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-cursos'>Novo</a>
+                            <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-cursos'
+                            onclick="
+                                $('[name=id]').val('');
+                                $('[name=curso]').val('');
+                                $('[name=campus]').val('');
+                            ">Novo</a>
                             <div class="modal fade" id="modal-cursos">
                                 <div class="modal-dialog">
                                     <div class="modal-content">

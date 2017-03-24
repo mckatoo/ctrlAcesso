@@ -3,7 +3,12 @@
                     <i class="fa fa-users"></i> Turma
                     <div class="pull-right">
                         <div class="btn-group">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-turma'>Novo</a>
+                            <a class="btn btn-primary btn-xs" data-toggle="modal" href='#modal-turma'
+                            onclick="
+                                $('[name=id]').val('');
+                                $('[name=turma]').val('');
+                                $('[name=curso]').val('');
+                            ">Novo</a>
                             <div class="modal fade" id="modal-turma">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -49,8 +54,8 @@
                                     @else
                                         <tr>
                                     @endif
-                                        <td class="col-lg-2">{{ $t->turma }}</td>
-                                        <td class="col-lg-6 text-center">{{ $t->curso['curso'] }}</td>
+                                        <td class="col-lg-3">{{ $t->turma }}</td>
+                                        <td class="col-lg-5 text-center">{{ $t->curso['curso'] }}</td>
                                         <td class="col-lg-2"><a class="btn btn-xs btn-primary" data-toggle="modal" href='#modal-turma'
                                         onclick="
                                             $('[name=id]').val('{{ $t->id }}');

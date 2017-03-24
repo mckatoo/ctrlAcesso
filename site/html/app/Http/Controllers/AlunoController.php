@@ -27,7 +27,7 @@ class AlunoController extends Controller
     public function salvar(Request $request)
     {
     	if ($request->id !== "") {
-            $aluno = \App\Aluno::find($request->id)->first();
+            $aluno = \App\Aluno::find($request->id);
             $msg = 'Registro atualizado com sucesso!';
         } else {
             $aluno = new \App\Aluno();
@@ -35,7 +35,7 @@ class AlunoController extends Controller
         }
 
         if ($request->campus !== "") {
-        	$curso = \App\Curso::find($request->curso)->first();
+        	$curso = \App\Curso::find($request->curso);
         	$curso->campus_id = $request->campus;
         	$curso->save();
         }
@@ -43,7 +43,7 @@ class AlunoController extends Controller
         $aluno->nome = $request->nome;
         $aluno->matricula = $request->matricula;
         $aluno->turma_id = $request->turma;
-        $aluno->aceite_contrato = date('Y-m-d H:i:s',strtotime($request->aceite));
+        $aluno->aceite_contrato = date('Y-m-d H:i:s',strtotime($request->aceite))->format('Y-m-d H:i:s');
         $aluno->entradas = $request->entradas;
         $aluno->save();
         return back()->with('sucesso',$msg);
