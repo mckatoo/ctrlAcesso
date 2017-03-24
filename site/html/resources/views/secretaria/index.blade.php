@@ -40,7 +40,7 @@
 
           <h2 class="sub-header">Alunos com Contrato Aceito</h2>
 
-          <div class="table-responsive">
+          <div class="">
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -156,9 +156,11 @@
                 @endforeach
               </tbody>
             </table>
-            <div class="text-center">
-              {{ $aluno->links() }}
-            </div>
+            @if (!isset($incoerenciaAluno))
+              <div class="text-center">
+                {{ $aluno->links() }}
+              </div>
+            @endif
           </div>
         </div>
       </div>
