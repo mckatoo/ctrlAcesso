@@ -417,3 +417,16 @@ input[type=file] {
         color: #337ab7;
     }
 }
+
+@media screen and (max-width: 1280px) {
+    body {
+        font-size: 16pt;
+    }
+
+    .input-group {
+        padding-left: 10%;
+        width: 87%;
+        transform: scale(1.3);
+    }
+
+}

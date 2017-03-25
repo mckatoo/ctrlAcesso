@@ -17,11 +17,13 @@
                     </a>
                 </li>
                 
-                <li class="dropdown">
-                    <a href="{{ route('secretaria.configuracoes') }}">
-                        <i class="fa fa-gears fa-fw"></i> Configurações
-                    </a>
-                </li>
+                @if (Auth::user()->tipo->tipo != 'Controlador de Acesso')
+                    <li class="dropdown">
+                        <a href="{{ route('secretaria.configuracoes') }}">
+                            <i class="fa fa-gears fa-fw"></i> Configurações
+                        </a>
+                    </li>
+                @endif
                 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">

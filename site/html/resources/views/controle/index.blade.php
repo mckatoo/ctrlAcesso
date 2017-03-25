@@ -37,6 +37,53 @@
           </div>
         @endif
           <div class="col-lg-12 col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                {!! Form::open(['route'=>'controle.pesquisar','method'=>'POST']) !!}
+                <div class="input-group custom-search-form">
+                  {!! Form::text('pesquisar', null, ['class' => 'form-control', 'placeholder' => 'Pesquisar...']) !!}
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+                {!! Form::close() !!}
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th class="text-center">Liberações Restantes</th>
+                        <th class="text-center">Liberar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($aluno as $a)
+                        <tr>
+                          <td>{{ $a->matricula }}</td>
+                          <td>{{ $a->nome }}</td>
+                          <td class="text-center">{{ 3 - $a->entradas }}</td>
+                          @if ($a->entradas < 3)
+                            <td class="text-center"><a href="" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
+                          @else
+                            <td class="text-center"><a href="" class="btn btn-default"><i class="fa fa-plus"></i></a></td>
+                          @endif
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              @if ($count > 5)
+                <div class="panel-footer text-center">
+                  {{ $aluno->links() }}
+                </div>
+              @endif
+            </div>
           </div>
         </div>
       </div>
