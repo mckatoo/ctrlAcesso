@@ -107,7 +107,7 @@
                 </tr>
               </thead>
               <tbody>
-              @if (isset($incoerenciaAluno))
+              @if ((isset($incoerenciaAluno)) and ($incoerenciaAluno->count() > 0))
                 <div class="hidden">{{ $tabela = $incoerenciaAluno }}</div>
               @else
                 <div class="hidden">{{ $tabela = $aluno }}</div>
@@ -156,7 +156,7 @@
                 @endforeach
               </tbody>
             </table>
-            @if (!isset($incoerenciaAluno))
+            @if ((!isset($incoerenciaAluno)) or ($incoerenciaAluno->count() < 1))
               <div class="text-center">
                 {{ $aluno->links() }}
               </div>

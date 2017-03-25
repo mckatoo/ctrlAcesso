@@ -21,6 +21,8 @@ Route::get('/', 'HomeController@index');
 
 Route::post('importar', ['as' => 'importar', 'uses' => 'HomeController@importar']);
 
+Route::post('user/update', ['as' => 'updateUser', 'uses' => 'HomeController@updateUser']);
+
 Route::group(['prefix' => 'secretaria','as' => 'secretaria.'], function() {
 	Route::get('/', 			['as' => 'index', 			'uses' => 'SecretariaController@index']);
 	Route::post('pesquisar', 	['as' => 'pesquisar', 		'uses' => 'SecretariaController@pesquisar']);
@@ -53,4 +55,10 @@ Route::group(['prefix' => 'turma','as' => 'turma.'], function() {
 	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'TurmaController@pesquisar']);
 	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'TurmaController@salvar']);
 	Route::post('apagar', 		['as' => 'apagar', 		'uses' => 'TurmaController@apagar']);
+});
+
+Route::group(['prefix' => 'controle','as' => 'controle.'], function() {
+	Route::get('/', 			['as' => 'index', 		'uses' => 'ControleController@index']);
+	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'ControleController@pesquisar']);
+	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'ControleController@salvar']);
 });

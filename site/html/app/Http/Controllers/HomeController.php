@@ -146,4 +146,21 @@ class HomeController extends Controller
 
     return back()->with('sucesso','Arquivo importado com sucesso!');
     }
+
+
+    public function updateUser(Request $request)
+    {
+        if ($request->id != '') {
+            $user = \App\User::find($request->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->tipoUser_id = $request->tipo;
+            if ($request->password != '') {
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
+            return back()->with('sucesso','Usuário atualizado com sucesso!');
+        }
+        return back()->with('erro','Falha ao atualizar o usuário!');
+    }
 }

@@ -88,6 +88,7 @@
                                         ?</h3>
                                         {!! Form::reset('Cancelar', ['class'=>'btn btn-default','data-dismiss'=>'modal']) !!}
                                         {!! Form::submit('Apagar', ['class'=>'btn btn-danger pull-right']) !!}
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>

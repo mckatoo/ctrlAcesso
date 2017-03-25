@@ -45,8 +45,6 @@ class AlunoController extends Controller
         $aluno->matricula = $request->matricula;
         $aluno->turma_id = $request->turma;
         $aluno->aceite_contrato = DateTime::createFromFormat('d/m/Y', $request->aceite);
-        // $aluno->aceite_contrato = \Carbon\Carbon::createFromFormat('Y-m-d',$request->aceite);
-        // $aluno->aceite_contrato = date('Y-m-d H:i:s',strtotime($request->aceite));
         $aluno->entradas = $request->entradas;
         $aluno->save();
         return back()->with('sucesso',$msg);
