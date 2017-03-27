@@ -83,7 +83,7 @@
                   </table>
                 </div>
               </div>
-              @if ($count > 5)
+              @if (isset($count) and ($count > 5))
                 <div class="panel-footer text-center">
                   {{ $aluno->links() }}
                 </div>
