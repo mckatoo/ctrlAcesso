@@ -30,6 +30,9 @@ class ControleController extends Controller
     public function liberar(Request $request)
     {
         $aluno = \App\Aluno::find($request->id);
+        $aluno->entradas = $aluno->entradas + 1;
+        $aluno->save();
+        return back()->with('sucesso',"Passagem liberarda para $aluno->nome.");
     }
 
     public function pesquisar(Request $request)

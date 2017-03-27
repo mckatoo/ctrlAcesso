@@ -68,9 +68,14 @@
                           <td>{{ $a->nome }}</td>
                           <td class="text-center">{{ 3 - $a->entradas }}</td>
                           @if ($a->entradas < 3)
-                            <td class="text-center"><a href="" class="btn btn-success"><i class="fa fa-plus"></i></a></td>
+                            <td class="text-center">
+                              <a class="btn btn-success" data-toggle="modal" href='#modal-liberar' onclick="
+                                $('#Aluno').html('{{ $a->nome }}');
+                                $('#idLiberar').val('{{ $a->id }}');
+                              "><i class="fa fa-plus"></i></a>
+                            </td>
                           @else
-                            <td class="text-center"><a href="" class="btn btn-default"><i class="fa fa-plus"></i></a></td>
+                            <td class="text-center"><a href="#" class="btn btn-default"><i class="fa fa-plus"></i></a></td>
                           @endif
                         </tr>
                       @endforeach
@@ -84,6 +89,24 @@
                 </div>
               @endif
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-liberar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Acesso Liberado</h4>
+          </div>
+          <div class="modal-body">
+              {!! Form::open(['route'=>'controle.liberar','method'=>'POST']) !!}
+              {!! Form::hidden('id', null,['id'=>'idLiberar']) !!}
+              <h3>Liberar acesso para <strong id="Aluno"></strong>?</h3>
+              {!! Form::reset('Cancelar', ['class'=>'btn btn-default','data-dismiss'=>'modal']) !!}
+              {!! Form::submit('Liberar', ['class'=>'btn btn-primary pull-right']) !!}
+              {!! Form::close() !!}
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ mix
 	], 'public/js/dashboard.js')
    	.sass('resources/assets/sass/app.scss', 'public/css')
       .combine([
-         'node_modules/sb-admin-2/vendor/bootstrap/css/bootstrap.min.css',
+         'resources/assets/css/bootstrap.min.css',
          'node_modules/sb-admin-2/vendor/metisMenu/metisMenu.min.css',
          'node_modules/sb-admin-2/dist/css/sb-admin-2.css',
          'node_modules/sb-admin-2/vendor/morrisjs/morris.css',
@@ -32,7 +32,7 @@ mix
          'resources/assets/css/bootstrap-datepicker.css',
       ], 'public/css/dashboard.css')
    	.combine([
-   		'node_modules/sb-admin-2/vendor/bootstrap/css/bootstrap.min.css',
+   		'resources/assets/css/bootstrap.min.css',
    		'node_modules/sb-admin-2/vendor/metisMenu/metisMenu.min.css',
    		'node_modules/sb-admin-2/dist/css/sb-admin-2.css',
    		'node_modules/sb-admin-2/vendor/font-awesome/css/font-awesome.min.css',

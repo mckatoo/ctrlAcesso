@@ -60,5 +60,5 @@ Route::group(['prefix' => 'turma','as' => 'turma.'], function() {
 Route::group(['prefix' => 'controle','as' => 'controle.'], function() {
 	Route::get('/', 			['as' => 'index', 		'uses' => 'ControleController@index']);
 	Route::post('pesquisar', 	['as' => 'pesquisar', 	'uses' => 'ControleController@pesquisar']);
-	Route::post('salvar', 		['as' => 'salvar', 		'uses' => 'ControleController@salvar']);
+	Route::post('liberar',		['as' => 'liberar', 	'uses' => 'ControleController@liberar']);
 });
