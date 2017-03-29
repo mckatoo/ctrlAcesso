@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -69,5 +70,15 @@ class RegisterController extends Controller
             'tipoUser_id' => $data['tipo'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        if (Auth::user()->tipo->tipo == "Administrador") {
+            $tipoUsers = \App\tipoUser::get();
+        } else {
+            $tipoUsers = \App\tipoUser::where('id','<>',1)->get();
+        }
+        return view('auth.register',compact('tipoUsers'));
     }
 }

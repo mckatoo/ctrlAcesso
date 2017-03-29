@@ -22,6 +22,7 @@ Route::get('/', 'HomeController@index');
 Route::post('importar', 				['as' => 'importar', 'uses' => 'HomeController@importar']);
 
 Route::post('user/update', 				['as' => 'updateUser', 'uses' => 'HomeController@updateUser']);
+Route::post('user/delete', 				['as' => 'deleteUser', 'uses' => 'HomeController@deleteUser']);
 
 Route::group(['prefix' => 'secretaria','as' => 'secretaria.'], function() {
 	Route::get('/', 					['as' => 'index', 			'uses' => 'SecretariaController@index']);

@@ -1,73 +1,45 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('layouts.admin')
+
+@section('css')
+    <link rel="stylesheet" href="{{ mix('css/dashboard.css') }}">
+@stop
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    @include('layouts.sidebar')
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Perfil</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    {!! Form::open(['route' => 'updateUser', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'frmUsuarios']) !!}
+                    {!! Form::hidden('id', Auth::user()->id, ['id' => 'idUsuario']) !!}
+                    <div class="form-group col-lg-12">
+                        {!! Form::label('name', 'Nome', ['class' => 'control-label','placeholder'=>'Nome Completo']) !!}
+                        {!! Form::text('name', old('name', Auth::user()->name), ['class'=>'form-control','required'=>'required','autofocus'=>'autofocus']) !!}
+                    </div>
+                    <div class="form-group col-lg-12">
+                        {!! Form::label('email', 'E-Mail', ['class' => 'control-label','placeholder'=>'E-Mail']) !!}
+                        {!! Form::email('email', old('email', Auth::user()->email), ['class'=>'form-control','required'=>'required']) !!}
+                    </div>
+                    <div class="form-group col-lg-6">
+                        {!! Form::label('password', 'Senha', ['class' => 'control-label']) !!}
+                        {!! Form::password('password', ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group col-lg-6">
+                        {!! Form::label('password_confirmation', 'Confirmar Senha', ['class' => 'control-label']) !!}
+                        {!! Form::password('password_confirmation', ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="form-group col-lg-12">
+                        {!! Form::label('tipo', 'Tipo de usuários', ['class' => 'control-label']) !!}
+                        {!! Form::select('tipo', $tipoUsers->pluck('tipo','id'), Auth::user()->tipoUser_id, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::reset('Cancelar', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
+                        {!! Form::submit('Salvar', ['class' => 'btn btn-primary pull-right']) !!}
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
         </div>

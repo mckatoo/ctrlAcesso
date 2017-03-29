@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class SecretariaController extends Controller
 {
@@ -32,8 +33,14 @@ class SecretariaController extends Controller
         $campus = \App\Campus::get();
         $curso = \App\Curso::with('campus')->get();
         $turma = \App\Turma::with('curso')->get();
-        $usuarios = \App\User::with('tipo')->get();
-        $tipoUsers = \App\tipoUser::get();
+        if (Auth::user()->tipo->tipo == "Administrador") {
+            $usuarios = \App\User::with('tipo')->get();
+            $tipoUsers = \App\tipoUser::get();
+        } else {
+            $usuarios = \App\User::with('tipo')->where('tipoUser_id','<>',1)->get();
+            $tipoUsers = \App\tipoUser::where('id','<>',1)->get();
+        }
+        
         if (($curso->where('campus_id','=','')->count() > 0)or($turma->where('curso_id','=','')->count() > 0)) {
             return view('configuracoes.index',compact('campus','curso','turma','usuarios','tipoUsers'))->with('erro','Incoerências para resolver estão em vermelho.');
         } else {

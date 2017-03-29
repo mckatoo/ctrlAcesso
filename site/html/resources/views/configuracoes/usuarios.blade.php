@@ -77,11 +77,36 @@
                                             $('[name=password]').val('');
                                             $('[name=password-confirm]').val('');
                                         " data-toggle="modal" href='#modal-usuarios'>Editar</a></td>
-                                        <td class="col-lg-2 text-right"><a class="btn btn-xs btn-danger">Apagar</a></td>
+                                        <td class="col-lg-2 text-right">
+                                            <a class="btn btn-xs btn-danger" data-toggle="modal" href='#modal-Delete-User' onclick="
+                                                $('#idApagarUser').val('{{ $u->id }}');
+                                                $('#userApagar').html('{{ $u->name }}');
+                                            ">Apagar</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="modal fade" id="modal-Delete-User">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Excluir Usuário</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {!! Form::open(['route'=>'deleteUser','method'=>'POST']) !!}
+                                        {!! Form::hidden('id', null,['id'=>'idApagarUser']) !!}
+                                        <h3>Tem certeza que deseja apagar o usuário:
+                                        <i id="userApagar"></i>
+                                        ?</h3>
+                                        {!! Form::reset('Cancelar', ['class'=>'btn btn-default','data-dismiss'=>'modal']) !!}
+                                        {!! Form::submit('Apagar', ['class'=>'btn btn-danger pull-right']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {{-- </div> --}}
             </div>

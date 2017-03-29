@@ -159,8 +159,17 @@ class HomeController extends Controller
                 $user->password = bcrypt($request->password);
             }
             $user->save();
-            return back()->with('sucesso','Usuário atualizado com sucesso!');
+            return back()->with('sucesso','Usuário $request->name atualizado com sucesso!');
         }
         return back()->with('erro','Falha ao atualizar o usuário!');
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $user = \App\User::find($request->id);
+        $usuario = $user->name;
+        $user->delete();
+
+        return back()->with('sucesso',"Usuário $usuario excluido com sucesso!");
     }
 }
