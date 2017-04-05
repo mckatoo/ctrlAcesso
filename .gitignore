@@ -6,3 +6,7 @@ site/html/node_modules
 site/html/vendor
 site/html/npm-debug.log
 site/html/public
+docker.sh
+exec
+nginx
+php

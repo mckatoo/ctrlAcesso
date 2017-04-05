@@ -39,11 +39,11 @@
           <div class="col-lg-12 col-sm-12">
             <div class="panel panel-default">
               <div class="panel-heading">
-                {!! Form::open(['route'=>'controle.pesquisar','method'=>'POST']) !!}
+                {!! Form::open(['route'=>'controle.pesquisar','method'=>'POST','id'=>'frmPesquisa']) !!}
                 <div class="input-group custom-search-form">
                   {!! Form::text('pesquisar', null, ['class' => 'form-control', 'placeholder' => 'Pesquisar...']) !!}
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
+                    <button class="btn btn-default" type="button" onclick="$('#frmPesquisa').submit()">
                         <i class="fa fa-search"></i>
                     </button>
                   </span>
