@@ -1,32 +1,39 @@
-<div class="navbar-fixed">
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">three</a></li>
+<header>
+    <div class="navbar-fixed">
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!"><i class="fa fa-user" aria-hidden="true"></i>Perfil</a></li>
+            <li class="divider"></li>
+            <li><a href="#!"><i class="fa fa-sign-out" aria-hidden="true"></i>Sair</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper orange darken-4">
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="waves-effect" href="#"><i class="material-icons left">home</i>Principal</a></li>
+                    <li><a class="waves-effect" href="#"><i class="material-icons left">settings</i>Configurações</a></li>
+                    <!-- Dropdown -->
+                    <li><a class="waves-effect" href="#" class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">person</i>Nome do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <ul class="side-nav fixed">
+        <li class="logo">
+            <a id="logo-container" href="/" class="brand-logo">
+                <!--<object id="front-page-logo" type="image/svg+xml" data="/assets/images/navbar-brand.svg">Your browser does not support SVG</object>-->
+            </a>
+        </li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">home</i>Principal</a></li>
+        <li><a class="waves-effect" href="#!"><i class="fa fa-archive fa-fw"></i>Secretaria</a></li>
+        <li><a class="waves-effect" href="#!"><i class="fa fa-users fa-fw"></i>Controle de Acesso</a></li>
+        <li><a class="waves-effect" href="#!"><i class="fa fa-file fa-fw"></i>Relatórios</a></li>
     </ul>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="waves-effect" href="#"><i class="material-icons left">home</i>Principal</a></li>
-                <li><a class="waves-effect" href="#"><i class="material-icons left">settings</i>Configurações</a></li>
-                <!-- Dropdown -->
-                <li><a class="waves-effect" href="#" class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">person</i>Nome do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
+</header>
 
-<ul id="slide-out" class="side-nav fixed" style="transform: translateX(0px);">
-    <li class="logo">
-        <a id="logo-container" href="/" class="brand-logo">
-            <!--<object id="front-page-logo" type="image/svg+xml" data="/assets/images/navbar-brand.svg">Your browser does not support SVG</object>-->
-        </a>
-    </li>
-    <li><a class="waves-effect" href="#!"><i class="material-icons">home</i>Principal</a></li>
-    <li><a class="waves-effect" href="#!"><i class="fa fa-archive fa-fw"></i>Secretaria</a></li>
-    <li><a class="waves-effect" href="#!"><i class="fa fa-users fa-fw"></i>Controle de Acesso</a></li>
-    <li><a class="waves-effect" href="#!"><i class="fa fa-file fa-fw"></i>Relatórios</a></li>
-</ul>
+<main>
+    <div class="row first-row">
+        <div class="col s12 m9 l12">
+            <secretaria></secretaria>
+        </div>
+    </div>
+</main>
