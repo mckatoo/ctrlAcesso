@@ -4,25 +4,29 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { SecretariaComponent } from './secretaria/secretaria.component';
-import { ControleAcessoComponent } from './controle-acesso/controle-acesso.component';
-import { RelatoriosComponent } from './relatorios/relatorios.component';
-import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
-import { PerfilComponent } from './perfil/perfil.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ConfiguracoesModule } from './configuracoes/configuracoes.module';
+import { ControleAcessoModule } from './controle-acesso/controle-acesso.module';
+import { HomeModule } from './home/home.module';
+import { PerfilModule } from './perfil/perfil.module';
+import { RelatoriosModule } from './relatorios/relatorios.module';
+import { SecretariaModule } from './secretaria/secretaria.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SecretariaComponent,
-    ControleAcessoComponent,
-    RelatoriosComponent,
-    ConfiguracoesComponent,
-    PerfilComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ConfiguracoesModule,
+    ControleAcessoModule,
+    HomeModule,
+    PerfilModule,
+    RelatoriosModule,
+    SecretariaModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

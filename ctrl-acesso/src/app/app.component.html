@@ -2,38 +2,36 @@
     <div class="navbar-fixed">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!"><i class="fa fa-user" aria-hidden="true"></i>Perfil</a></li>
+            <li><a [routerLink]="'perfil'"><i class="fa fa-user" aria-hidden="true"></i>Perfil</a></li>
             <li class="divider"></li>
-            <li><a href="#!"><i class="fa fa-sign-out" aria-hidden="true"></i>Sair</a></li>
+            <li><a [routerLink]="'logout'"><i class="fa fa-sign-out" aria-hidden="true"></i>Sair</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper orange darken-4">
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="waves-effect" href="#"><i class="material-icons left">home</i>Principal</a></li>
-                    <li><a class="waves-effect" href="#"><i class="material-icons left">settings</i>Configurações</a></li>
+                    <li><a class="waves-effect" [routerLink]="''"><i class="material-icons left">home</i>Principal</a></li>
+                    <li><a class="waves-effect" [routerLink]="'configuracoes'"><i class="material-icons left">settings</i>Configurações</a></li>
                     <!-- Dropdown -->
-                    <li><a class="waves-effect" href="#" class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">person</i>Nome do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="waves-effect" class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons left">person</i>Nome do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>
     </div>
     <ul class="side-nav fixed">
         <li class="logo">
-            <a id="logo-container" href="/" class="brand-logo">
-                <!--<object id="front-page-logo" type="image/svg+xml" data="/assets/images/navbar-brand.svg">Your browser does not support SVG</object>-->
-            </a>
+            <a id="logo-container" href="/" class="brand-logo"></a>
         </li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">home</i>Principal</a></li>
-        <li><a class="waves-effect" href="#!"><i class="fa fa-archive fa-fw"></i>Secretaria</a></li>
-        <li><a class="waves-effect" href="#!"><i class="fa fa-users fa-fw"></i>Controle de Acesso</a></li>
-        <li><a class="waves-effect" href="#!"><i class="fa fa-file fa-fw"></i>Relatórios</a></li>
+        <li><a class="waves-effect" [routerLink]="''"><i class="material-icons">home</i>Principal</a></li>
+        <li><a class="waves-effect" [routerLink]="'secretaria'"><i class="fa fa-archive fa-fw"></i>Secretaria</a></li>
+        <li><a class="waves-effect" [routerLink]="'controle'"><i class="fa fa-users fa-fw"></i>Controle de Acesso</a></li>
+        <li><a class="waves-effect" [routerLink]="'relatorios'"><i class="fa fa-file fa-fw"></i>Relatórios</a></li>
     </ul>
 </header>
 
 <main>
     <div class="row first-row">
         <div class="col s12 m9 l12">
-            <secretaria></secretaria>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </main>
