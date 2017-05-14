@@ -12,6 +12,11 @@ import { PerfilModule } from './perfil/perfil.module';
 import { RelatoriosModule } from './relatorios/relatorios.module';
 import { SecretariaModule } from './secretaria/secretaria.module';
 
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { firebaseConfig } from './../environments/firebase.config';
+import { AngularFireModule } from 'angularfire2';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +31,10 @@ import { SecretariaModule } from './secretaria/secretaria.module';
     PerfilModule,
     RelatoriosModule,
     SecretariaModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
