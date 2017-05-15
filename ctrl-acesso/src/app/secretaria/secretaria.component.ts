@@ -11,7 +11,7 @@ export class SecretariaComponent implements OnInit {
   text: string = '';
 
   constructor(db: AngularFireDatabase) {
-    this.lista = db.list('/teste');
+    this.lista = db.list('/alunos');
   }
 
   trocar(str:string, rgx, por:string=""){
@@ -39,17 +39,20 @@ export class SecretariaComponent implements OnInit {
     }
 
     reader.readAsText(fileName);
+    
   }
 
-  save() {
-    this.lista.push({
-      "matricula": "31010004709",
-      "nome": "TEFDSJDFKL ASLKDJF SDLFJ SDSDF",
-      "campus": "IESI",
-      "curso": "13901-IESI-SP - ASDFSDF FD BANISMO",
-      "turma": "FSDFD545-3101",
-      "aceite_contrato": "18/02/2016"
-    });
+  save(json) {
+  // json = {
+  //     "matricula": "31010004709",
+  //     "nome": "TEFDSJDFKL ASLKDJF SDLFJ SDSDF",
+  //     "campus": "IESI",
+  //     "curso": "13901-IESI-SP - ASDFSDF FD BANISMO",
+  //     "turma": "FSDFD545-3101",
+  //     "aceite_contrato": "18/02/2016",
+  //     "entradas": "0"
+  //   };
+    this.lista.push(json);
   }
   
   update(key: string, json: any) {
