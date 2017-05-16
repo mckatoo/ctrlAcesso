@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FirebaseComponent } from './firebase.component';
+import { SecretariaEditComponent } from './secretaria-edit.component';
 
-describe('FirebaseComponent', () => {
-  let component: FirebaseComponent;
-  let fixture: ComponentFixture<FirebaseComponent>;
+describe('SecretariaEditComponent', () => {
+  let component: SecretariaEditComponent;
+  let fixture: ComponentFixture<SecretariaEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FirebaseComponent ]
+      declarations: [ SecretariaEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FirebaseComponent);
+    fixture = TestBed.createComponent(SecretariaEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

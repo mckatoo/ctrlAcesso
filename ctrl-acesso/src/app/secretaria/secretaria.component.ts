@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { Title } from '@angular/platform-browser';
+import { SecretariaEditComponent } from './../modal/secretaria-edit/secretaria-edit.component';
 
 @Component({
   selector: 'secretaria',
@@ -9,9 +11,9 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 export class SecretariaComponent implements OnInit {
   alunos: FirebaseListObservable<any>;
   text: string = '';
-  editAluno;
+  editAluno: FirebaseListObservable<any>;
 
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase, private title: Title) {
     this.alunos = db.list('/alunos');
   }
 
@@ -64,6 +66,8 @@ export class SecretariaComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('IESI - Secretaria');
+  }
 
 }
