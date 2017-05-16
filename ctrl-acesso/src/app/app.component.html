@@ -9,8 +9,8 @@
         <nav>
             <div class="nav-wrapper orange darken-4">
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="waves-effect" [routerLink]="''"><i class="material-icons left">home</i>Principal</a></li>
-                    <li><a class="waves-effect" [routerLink]="'configuracoes'"><i class="material-icons left">settings</i>Configurações</a></li>
+                    <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'home'"><i class="material-icons left">home</i>Principal</a></li>
+                    <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'configuracoes'"><i class="material-icons left">settings</i>Configurações</a></li>
                     <!-- Dropdown -->
                     <li><a class="waves-effect" class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons left">person</i>Nome do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
@@ -21,10 +21,10 @@
         <li class="logo">
             <a id="logo-container" href="/" class="brand-logo"></a>
         </li>
-        <li><a class="waves-effect" [routerLink]="''"><i class="material-icons">home</i>Principal</a></li>
-        <li><a class="waves-effect" [routerLink]="'secretaria'"><i class="fa fa-archive fa-fw"></i>Secretaria</a></li>
-        <li><a class="waves-effect" [routerLink]="'controle'"><i class="fa fa-users fa-fw"></i>Controle de Acesso</a></li>
-        <li><a class="waves-effect" [routerLink]="'relatorios'"><i class="fa fa-file fa-fw"></i>Relatórios</a></li>
+        <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'home'"><i class="material-icons">home</i>Principal</a></li>
+        <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'secretaria'"><i class="fa fa-archive fa-fw"></i>Secretaria</a></li>
+        <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'controle'"><i class="fa fa-users fa-fw"></i>Controle de Acesso</a></li>
+        <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'relatorios'"><i class="fa fa-file fa-fw"></i>Relatórios</a></li>
     </ul>
 </header>
 

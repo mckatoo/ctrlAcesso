@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     imports: [
         RouterModule.forChild([
+            { path: 'home', component: HomeComponent },
             { path: '', component: HomeComponent }
         ])
     ],

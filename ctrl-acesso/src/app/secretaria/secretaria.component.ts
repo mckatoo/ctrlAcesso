@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'secretaria',
@@ -7,11 +7,12 @@ import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase }
   styleUrls: ['./secretaria.component.scss']
 })
 export class SecretariaComponent implements OnInit {
-  lista: FirebaseListObservable<any>;
+  alunos: FirebaseListObservable<any>;
   text: string = '';
+  editAluno;
 
   constructor(db: AngularFireDatabase) {
-    this.lista = db.list('/alunos');
+    this.alunos = db.list('/alunos');
   }
 
   trocar(str:string, rgx, por:string=""){
@@ -43,31 +44,26 @@ export class SecretariaComponent implements OnInit {
   }
 
   save(json) {
-  // json = {
-  //     "matricula": "31010004709",
-  //     "nome": "TEFDSJDFKL ASLKDJF SDLFJ SDSDF",
-  //     "campus": "IESI",
-  //     "curso": "13901-IESI-SP - ASDFSDF FD BANISMO",
-  //     "turma": "FSDFD545-3101",
-  //     "aceite_contrato": "18/02/2016",
-  //     "entradas": "0"
-  //   };
-    this.lista.push(json);
+    this.alunos.push(json);
   }
   
+  editar(aluno){
+    this.editAluno = aluno;
+    console.log(aluno);
+  }
+
   update(key: string, json: any) {
-    this.lista.update(key, json);
+    this.alunos.update(key, json);
   }
   
   delete(key: string) {
     if (key == 'undefined') {
-      this.lista.remove();
+      this.alunos.remove();
     } else {
-      this.lista.remove(key); 
+      this.alunos.remove(key); 
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
