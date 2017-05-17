@@ -1,20 +1,30 @@
+import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Title } from '@angular/platform-browser';
-import { SecretariaEditComponent } from './../modal/secretaria-edit/secretaria-edit.component';
 
 @Component({
   selector: 'secretaria',
   templateUrl: './secretaria.component.html',
-  styleUrls: ['./secretaria.component.scss']
+  styleUrls: ['./secretaria.component.scss'],
 })
+
 export class SecretariaComponent implements OnInit {
   alunos: FirebaseListObservable<any>;
   text: string = '';
   editAluno: FirebaseListObservable<any>;
+  display = 'hidden';
 
   constructor(private db: AngularFireDatabase, private title: Title) {
     this.alunos = db.list('/alunos');
+  }
+
+  modalOpen() {
+    this.display = '';
+  }
+
+  modalClose() {
+    this.display = 'hidden';
   }
 
   trocar(str:string, rgx, por:string=""){
@@ -45,17 +55,19 @@ export class SecretariaComponent implements OnInit {
     
   }
 
-  save(json) {
+  save(json:string) {
     this.alunos.push(json);
   }
   
   editar(aluno){
+    this.display = '';
     this.editAluno = aluno;
-    console.log(aluno);
   }
 
-  update(key: string, json: any) {
-    this.alunos.update(key, json);
+  update(key: string, json: string) {
+    console.log(key);
+    console.log(json);
+    // this.alunos.update(key, json);
   }
   
   delete(key: string) {

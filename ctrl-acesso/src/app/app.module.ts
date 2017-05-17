@@ -36,6 +36,7 @@ import { SecretariaModule } from './secretaria/secretaria.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
+  exports: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
