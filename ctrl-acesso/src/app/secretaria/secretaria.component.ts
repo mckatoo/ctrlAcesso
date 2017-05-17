@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
@@ -64,7 +65,7 @@ export class SecretariaComponent implements OnInit {
     this.editAluno = aluno;
   }
 
-  update(key: string, json: string) {
+  update(key: string, json: NgForm) {
     console.log(key);
     console.log(json);
     // this.alunos.update(key, json);
