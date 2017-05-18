@@ -65,10 +65,12 @@ export class SecretariaComponent implements OnInit {
     this.editAluno = aluno;
   }
 
-  update(key: string, json: NgForm) {
-    console.log(key);
-    console.log(json);
-    // this.alunos.update(key, json);
+  update(key:string) {
+    // console.log(key);
+    // console.log(json.value);
+    // console.log(this.editAluno);
+    this.alunos.update(key,this.editAluno);
+    this.display = 'hidden';
   }
   
   delete(key: string) {
