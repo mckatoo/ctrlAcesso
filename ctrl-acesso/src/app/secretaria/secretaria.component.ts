@@ -2,6 +2,7 @@ import { NgForm } from '@angular/forms';
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -17,7 +18,14 @@ export class SecretariaComponent implements OnInit {
   display = 'hidden';
 
   constructor(private db: AngularFireDatabase, private title: Title) {
-    this.alunos = db.list('/alunos');
+    this.alunos = db.list('/alunos', {
+      query: {
+        orderByChild: 'nome',
+        limitToFirst: 5,
+        // startAt: 5
+      }
+    });
+    
   }
 
   modalOpen() {

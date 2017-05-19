@@ -4,7 +4,8 @@
         <ul id="dropdown1" class="dropdown-content">
             <li><a [routerLink]="'perfil'"><i class="fa fa-user" aria-hidden="true"></i>Perfil</a></li>
             <li class="divider"></li>
-            <li><a [routerLink]="'logout'"><i class="fa fa-sign-out" aria-hidden="true"></i>Sair</a></li>
+            <li><a (click)="login()"><i class="fa fa-sign-in" aria-hidden="true"></i>Entrar</a></li>
+            <li><a (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Sair</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper orange darken-4">
@@ -12,7 +13,7 @@
                     <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'home'"><i class="material-icons left">home</i>Principal</a></li>
                     <li routerLinkActive="active"><a class="waves-effect" [routerLink]="'configuracoes'"><i class="material-icons left">settings</i>Configurações</a></li>
                     <!-- Dropdown -->
-                    <li><a class="waves-effect" class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons left">person</i>Nome do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="waves-effect" class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons left">person</i>{{ (usuario | async)?.email }}<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>

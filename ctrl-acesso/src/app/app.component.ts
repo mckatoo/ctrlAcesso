@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'root',
@@ -6,4 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  usuario: Observable<firebase.User>;
+
+  constructor(private afAuth: AngularFireAuth) {
+    this.usuario = afAuth.authState;
+    console.log(this.usuario);
+  }
+
+  login(email:string, passwd:string) {
+    email = 'mckatoo@gmail.com';
+    passwd = 'mikito';
+    this.afAuth.auth.signInWithEmailAndPassword(email,passwd);
+    // this._location.reload;
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }
