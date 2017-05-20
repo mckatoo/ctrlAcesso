@@ -13,7 +13,6 @@ export class AppComponent {
 
   constructor(private afAuth: AngularFireAuth) {
     this.usuario = afAuth.authState;
-    console.log(this.usuario);
   }
 
   login(email:string, passwd:string) {

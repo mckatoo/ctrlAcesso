@@ -1,10 +1,13 @@
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './../app.component';
-import { SecretariaComponent } from './secretaria.component';
-import { SecretariaRoutingModule } from './secretaria-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { SecretariaComponent } from './secretaria.component';
+import { SecretariaRoutingModule } from './secretaria-routing.module';
+import { LengthPipe } from './../shared/pipe/lenght/length.pipe';
+import { PaginatePipe } from './../shared/pipe/paginate/paginate.pipe';
 
 @NgModule({
   imports: [
@@ -14,7 +17,9 @@ import { CommonModule } from '@angular/common';
 	  FormsModule
   ],
   declarations: [
-    SecretariaComponent
+    SecretariaComponent,
+    LengthPipe,
+    PaginatePipe
   ]
 })
 export class SecretariaModule {}

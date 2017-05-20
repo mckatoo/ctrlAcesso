@@ -16,16 +16,32 @@ export class SecretariaComponent implements OnInit {
   text: string = '';
   editAluno: FirebaseListObservable<any>;
   display = 'hidden';
+  limit = 5;
+  dbf: AngularFireDatabase;
+  // sizeSubject: Subject<any>;
 
   constructor(private db: AngularFireDatabase, private title: Title) {
-    this.alunos = db.list('/alunos', {
+    this.dbf = db;
+    // this.alunos = this.dbf.list('/alunos', {
+    //   query: {
+    //     orderByChild: 'nome',
+    //     limitToFirst: this.limit,
+    //   }
+    // });
+    this.getAlunos();
+  }
+
+  getAlunos(n = 0){
+    this.alunos = this.dbf.list('/alunos', {
       query: {
         orderByChild: 'nome',
-        limitToFirst: 5,
-        // startAt: 5
+        limitToFirst: this.limit + n,
       }
     });
-    
+  }
+
+  mais(n) {
+    this.getAlunos(n);
   }
 
   modalOpen() {
