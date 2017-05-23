@@ -12,31 +12,39 @@ import { Title } from '@angular/platform-browser';
 })
 
 export class SecretariaComponent implements OnInit {
-  alunos: FirebaseListObservable<any>;
   text: string = '';
   editAluno: FirebaseListObservable<any>;
   display = 'hidden';
-  limit = 5;
   count: number;
+  pagina: number = 0;
+	qtdPorPagina: number = 5;
+  alunos = [];
+  alunosTotal:object;
 
   constructor(private db: AngularFireDatabase, private title: Title) {
     this.getAlunos();
   }
 
-  getAlunos(n = 0){
-    this.alunos = this.db.list('/alunos', {
-      query: {
-        orderByChild: 'nome',
-        limitToFirst: this.limit + n,
-      }
-    });
-    this.db.list('/alunos').subscribe(
-      dados => this.count = dados.length
-    );
-  }
+  paginar($event: any) {
+		this.pagina = $event - 1;
+		this.getAlunos();
+	}
 
-  mais(n) {
-    this.getAlunos(n);
+  getAlunos(){
+    this.alunos = [];
+    this.db.object('/alunos').subscribe(
+      dados => {
+        this.alunosTotal = dados.val();
+        this.count = dados.length;
+      }
+    );
+    // for (let i = ( this.pagina * this.qtdPorPagina ); i < (this.pagina * this.qtdPorPagina + this.qtdPorPagina); i++) {
+		// 	if (i >= this.count) {
+		// 		break;
+		// 	}
+		// 	this.alunos.push(this.alunosTotal[i]);
+		// }
+    console.log(this.alunosTotal);
   }
 
   modalOpen() {
@@ -88,15 +96,15 @@ export class SecretariaComponent implements OnInit {
     // console.log(key);
     // console.log(json.value);
     // console.log(this.editAluno);
-    this.alunos.update(key,this.editAluno);
+    // this.alunosTotal.update(key,this.editAluno);
     this.display = 'hidden';
   }
   
   delete(key: string) {
     if (key == 'undefined') {
-      this.alunos.remove();
+      // this.alunosTotal.remove();
     } else {
-      this.alunos.remove(key); 
+      // this.alunosTotal.remove(key); 
     }
   }
 
